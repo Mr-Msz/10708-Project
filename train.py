@@ -6,8 +6,8 @@ import torch.nn.functional as F
 import torch.optim as optim
 import numpy as np
 
-from models import GCN
-from sampler import Sampler_FastGCN, Sampler_ASGCN
+from models import GCN, HybridMethod
+from sampler import Sampler_FastGCN, Sampler_ASGCN, Alternative_Sampler_FastGCN
 from utils import load_data, get_batches, accuracy, f1_score
 from utils import sparse_mx_to_torch_sparse_tensor
 
@@ -57,7 +57,7 @@ def train(train_ind, train_labels, batch_size, train_times):
             sampled_feats, sampled_adjs, var_loss = model.sampling(
                 batch_inds)
             optimizer.zero_grad()
-            output = model(sampled_feats, sampled_adjs)
+            output = model(sampled_feats, train_features[batch_inds], sampled_adjs)
             loss_train = loss_fn(output, batch_labels) + 0.5 * var_loss
             acc_train = accuracy(output, batch_labels)
             loss_train.backward()
@@ -69,7 +69,7 @@ def train(train_ind, train_labels, batch_size, train_times):
 def test(test_adj, test_feats, test_labels, epoch):
     t = time.time()
     model.eval()
-    outputs = model(test_feats, test_adj)
+    outputs = model(test_feats, test_feats[test_index], test_adj)
     loss_test = loss_fn(outputs, test_labels)
     acc_test = accuracy(outputs, test_labels)
     preds = outputs.max(1)[1].type_as(test_labels)
@@ -119,21 +119,46 @@ if __name__ == '__main__':
                                   input_dim=input_dim,
                                   layer_sizes=layer_sizes,
                                   device=device)
+        model = GCN(nfeat=features.shape[1],
+            nhid=args.hidden,
+            nclass=nclass,
+            dropout=args.dropout,
+            sampler=sampler).to(device)
+    elif args.model == 'Fast-Alt':
+        sampler = Alternative_Sampler_FastGCN(None, train_features, adj_train,
+                                  input_dim=input_dim,
+                                  layer_sizes=layer_sizes,
+                                  device=device)
+        model = GCN(nfeat=features.shape[1],
+            nhid=args.hidden,
+            nclass=nclass,
+            dropout=args.dropout,
+            sampler=sampler).to(device)
     elif args.model == 'AS':
         sampler = Sampler_ASGCN(None, train_features, adj_train,
                                 input_dim=input_dim,
                                 layer_sizes=layer_sizes,
                                 device=device)
+        model = GCN(nfeat=features.shape[1],    
+            nhid=args.hidden,    
+            nclass=nclass,    
+            dropout=args.dropout,    
+            sampler=sampler).to(device)
+    elif args.model == "HybridMethod":
+        sampler = Sampler_FastGCN(None, train_features, adj_train,
+                                  input_dim=input_dim,
+                                  layer_sizes=layer_sizes,
+                                  device=device)
+
+        model = HybridMethod(nfeat=features.shape[1],    
+            nhid=args.hidden,    
+            nclass=nclass,    
+            dropout=args.dropout,    
+            sampler=sampler).to(device)
     else:
         print(f"model name error, no model named {args.model}")
         exit()
 
-    # init model, optimizer and loss function
-    model = GCN(nfeat=features.shape[1],
-                nhid=args.hidden,
-                nclass=nclass,
-                dropout=args.dropout,
-                sampler=sampler).to(device)
     optimizer = optim.Adam(model.parameters(),
                            lr=args.lr, weight_decay=args.weight_decay)
     loss_fn = F.nll_loss
@@ -169,3 +194,8 @@ if __name__ == '__main__':
     logistic_score = f1_score(torch.from_numpy(logistic_predictions), test_labels, num_classes)
     print ("Logistic Model: ", "Accuracy: ", logistic_acc, "Score: ", logistic_score)
     
+    mlp.fit(train_features, y_train)
+    mlp_acc = mlp.score(test_feats[test_index], test_labels)
+    mlp_predictions = mlp.predict(test_feats[test_index])
+    mlp_score = f1_score(torch.from_numpy(mlp_predictions), test_labels, num_classes)
+    print ("Mlp Classifier: ", "Accuracy: ", mlp_acc, "Score: ", mlp_score)
