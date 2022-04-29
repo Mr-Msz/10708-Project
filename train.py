@@ -11,6 +11,8 @@ from sampler import Sampler_FastGCN, Sampler_ASGCN
 from utils import load_data, get_batches, accuracy, f1_score
 from utils import sparse_mx_to_torch_sparse_tensor
 
+from sklearn.linear_model import LogisticRegression
+from sklearn.neural_network import MLPClassifier
 
 def get_args():
     # Training settings
@@ -70,7 +72,8 @@ def test(test_adj, test_feats, test_labels, epoch):
     outputs = model(test_feats, test_adj)
     loss_test = loss_fn(outputs, test_labels)
     acc_test = accuracy(outputs, test_labels)
-    score = f1_score (outputs, test_labels)
+    preds = outputs.max(1)[1].type_as(test_labels)
+    score = f1_score (preds, test_labels, outputs.shape[1])
     return loss_test.item(), acc_test.item(), time.time() - t, score
 
 
@@ -154,3 +157,15 @@ if __name__ == '__main__':
               f"test_acc: {test_acc:.3f}, "
               f"test_times: {test_time:.3f}s, "
               f"test_score: {test_score:.3f}")
+
+    #Testing Simple Models
+    logistic_model = LogisticRegression()
+    mlp = MLPClassifier()
+    
+    num_classes = 7 if args.dataset == "cora" else 3
+    logistic_model.fit(train_features, y_train)
+    logistic_acc = logistic_model.score(test_feats[test_index], test_labels)
+    logistic_predictions = logistic_model.predict(test_feats[test_index])
+    logistic_score = f1_score(torch.from_numpy(logistic_predictions), test_labels, num_classes)
+    print ("Logistic Model: ", "Accuracy: ", logistic_acc, "Score: ", logistic_score)
+    
