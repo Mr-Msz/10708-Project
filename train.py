@@ -8,7 +8,7 @@ import numpy as np
 
 from models import GCN
 from sampler import Sampler_FastGCN, Sampler_ASGCN
-from utils import load_data, get_batches, accuracy
+from utils import load_data, get_batches, accuracy, f1_score
 from utils import sparse_mx_to_torch_sparse_tensor
 
 
@@ -70,8 +70,8 @@ def test(test_adj, test_feats, test_labels, epoch):
     outputs = model(test_feats, test_adj)
     loss_test = loss_fn(outputs, test_labels)
     acc_test = accuracy(outputs, test_labels)
-
-    return loss_test.item(), acc_test.item(), time.time() - t
+    score = f1_score (outputs, test_labels)
+    return loss_test.item(), acc_test.item(), time.time() - t, score
 
 
 if __name__ == '__main__':
@@ -142,7 +142,7 @@ if __name__ == '__main__':
                                                   y_train,
                                                   args.batchsize,
                                                   test_gap)
-        test_loss, test_acc, test_time = test(test_adj,
+        test_loss, test_acc, test_time, test_score = test(test_adj,
                                               test_feats,
                                               test_labels,
                                               args.epochs)
@@ -152,4 +152,5 @@ if __name__ == '__main__':
               f"train_times: {train_time:.3f}s "
               f"test_loss: {test_loss:.3f}, "
               f"test_acc: {test_acc:.3f}, "
-              f"test_times: {test_time:.3f}s")
+              f"test_times: {test_time:.3f}s, "
+              f"test_score: {test_score:.3f}")

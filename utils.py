@@ -166,6 +166,21 @@ def accuracy(output, labels):
     return correct / len(labels)
 
 
+def f1_score(output, labels):
+    preds = output.max(1)[1].type_as(labels)
+    avg_f1_score = 0
+    num_classes = output.shape[1]
+    for c in range(num_classes):
+        pred_pos = (preds == c)
+        label_pos = (labels == c)
+        true_pos = (preds == c) & (labels == c)
+        precision = (true_pos.sum()+0.0) / pred_pos.sum()
+        recall = (true_pos.sum()+0.0) / label_pos.sum()
+        f1_score = 2 * precision * recall / (recall + precision)
+        avg_f1_score += f1_score * label_pos.sum() / len(preds)
+    print ("avg_f1_score", avg_f1_score)
+    return avg_f1_score
+
 def sparse_mx_to_torch_sparse_tensor(sparse_mx):
     """Convert a scipy sparse matrix to a torch sparse tensor."""
     sparse_mx = sparse_mx.tocoo().astype(np.float32)
