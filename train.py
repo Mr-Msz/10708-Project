@@ -7,7 +7,7 @@ import torch.optim as optim
 import numpy as np
 
 from models import GCN, HybridMethod
-from sampler import Sampler_FastGCN, Sampler_ASGCN, Alternative_Sampler_FastGCN
+from sampler import Sampler_FastGCN, Sampler_ASGCN, Alternative_Sampler1_FastGCN,Alternative_Sampler2_FastGCN
 from utils import load_data, get_batches, accuracy, f1_score
 from utils import sparse_mx_to_torch_sparse_tensor
 
@@ -125,8 +125,18 @@ if __name__ == '__main__':
             nclass=nclass,
             dropout=args.dropout,
             sampler=sampler).to(device)
-    elif args.model == 'Fast-Alt':
-        sampler = Alternative_Sampler_FastGCN(None, train_features, adj_train,
+    elif args.model == 'Fast-Alt1':
+        sampler = Alternative_Sampler1_FastGCN(None, train_features, adj_train,
+                                  input_dim=input_dim,
+                                  layer_sizes=layer_sizes,
+                                  device=device)
+        model = GCN(nfeat=features.shape[1],
+            nhid=args.hidden,
+            nclass=nclass,
+            dropout=args.dropout,
+            sampler=sampler).to(device)
+    elif args.model == 'Fast-Alt2':
+        sampler = Alternative_Sampler2_FastGCN(None, train_features, adj_train,
                                   input_dim=input_dim,
                                   layer_sizes=layer_sizes,
                                   device=device)
