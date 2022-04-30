@@ -13,6 +13,7 @@ from utils import sparse_mx_to_torch_sparse_tensor
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 def get_args():
     # Training settings
@@ -163,7 +164,9 @@ if __name__ == '__main__':
                            lr=args.lr, weight_decay=args.weight_decay)
     loss_fn = F.nll_loss
     # loss_fn = torch.nn.CrossEntropyLoss()
-
+    train_accs = []
+    test_accs = []
+    train_times = []
     # train and test
     for epochs in range(0, args.epochs // test_gap):
         train_loss, train_acc, train_time = train(np.arange(train_nums),
@@ -182,10 +185,14 @@ if __name__ == '__main__':
               f"test_acc: {test_acc:.3f}, "
               f"test_times: {test_time:.3f}s, "
               f"test_score: {test_score:.3f}")
+        train_accs.append(train_acc)
+        test_accs.append(test_acc)
+        train_times.append(train_time)
 
     #Testing Simple Models
     logistic_model = LogisticRegression()
     mlp = MLPClassifier()
+    rf = RandomForestClassifier()
     
     num_classes = 7 if args.dataset == "cora" else 3
     logistic_model.fit(train_features, y_train)
@@ -199,3 +206,11 @@ if __name__ == '__main__':
     mlp_predictions = mlp.predict(test_feats[test_index])
     mlp_score = f1_score(torch.from_numpy(mlp_predictions), test_labels, num_classes)
     print ("Mlp Classifier: ", "Accuracy: ", mlp_acc, "Score: ", mlp_score)
+    
+    rf.fit(train_features, y_train)
+    rf_acc = rf.score(test_feats[test_index], test_labels)
+    rf_predictions = rf.predict(test_feats[test_index])
+    rf_score = f1_score(torch.from_numpy(rf_predictions), test_labels, num_classes)
+    print ("Rf Classifier: ", "Accuracy: ", rf_acc, "Score: ", rf_score)
+    outp = np.array([train_accs,test_accs,train_times])
+    np.savetxt('Fast_Alt_Pubmed.csv',outp,delimiter=',')
