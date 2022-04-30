@@ -1,7 +1,8 @@
 # 10708-Project
 
 ## Intro
-The Graph Convolutional Networks (GCN) originally proposed by Kipf and Welling are continued studied on different papers towards different directions and extent. In a lot of those area, it was shown that GCNs are effective graph model for semi-supervised learning. However, the original model was transductive meaning the premise for the constitution of the data is relatively harsh. Along with other defects like high-scale expansion along the network, FastGCN was introduced in 2018. By interpret the each layer as an integral operator of the input embedding over some probability measures, the writer used Monte Carlo approaches to further estimate the integral operator. We show the original model and some of the improvements and trails we made on the original FastGCN.
+In this paper we attempt to modify Fast-GCN in order to improve both the speed and accuracy of research paper classification. We propose two separate methods for generating a sampling distribution at each layer in the GCN that we hypothesize could outperform the sampling method in Fast-GCN. Our results, however, show that in the case of the Pubmed and Cora datasets, our methods do not in fact outperform Fast-GCN. We explore and discuss potential reasons for this below in the paper. Additionally, we show that in the case of the Pubmed dataset, simpler methods like a Random Forest significantly outperform all graphical convolutional networks, while in the Cora dataset, graphical convolutional networks perform better. We explore reasons behind the discrepancy between the performances of both classes of models on these two similar datasets.
 
 The codes are adapted from [FastGCN in PyTorch](https://github.com/Gkunnan97/FastGCN_pytorch).
+
 
