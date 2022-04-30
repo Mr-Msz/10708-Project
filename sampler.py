@@ -4,7 +4,7 @@ import torch
 import numpy as np
 import scipy.sparse as sp
 
-from scipy.sparse.linalg import norm as sparse_eigsh
+from scipy.sparse.linalg import eigsh as sparse_eigsh
 from scipy.sparse.linalg import norm as sparse_norm
 from torch.nn.parameter import Parameter
 
