@@ -21,3 +21,11 @@ For our baselines, we ran 3 different state of art Graph Convolutional Network m
 ![Test Accuracy of 3 models over Pubmed Dataset](https://github.com/Mr-Msz/10708-Project/blob/main/Images/Pre_Test_Acc_Pub.png)
 ![Test Accuracy of 3 models over Pubmed Dataset](https://github.com/Mr-Msz/10708-Project/blob/main/Images/Pre_Train_Time_Pub.png)
 <p align="center">Figure (2) Train/Test Outcome on PubMed Dataset</p>
+
+## Experiment & Result
+Experiment can be found in this ![report](https://github.com/Mr-Msz/10708-Project/blob/main/10708_Final_Project.pdf) (Section 4)
+###Result
+(1) c value:
+For our first alternative sampling method, we tried different values of the hyper-parameter c in order to find the optimal weighting between uniform sampling and our calculated probability distribution. We found that c = 0.2 worked the best on both Pubmed and Cora dataset, and plotted the results:
+![Figure 3: Test Accuracy with different value of c](https://github.com/Mr-Msz/10708-Project/blob/main/Images/c-graph.png)
+
