@@ -49,14 +49,14 @@ Below we present a comparison between GCN-Related Techniques in terms of train a
 
 <p align="center">
   <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/Train_Acc_Cora.png" />
-  <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/Train_Acc_Cora.png" />
-   <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/Train_Acc_Cora.png" />
+  <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/Test_Acc_Cora.png" />
+   <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/Train_Time_Cora.png" />
 </p>
 <p align="center">Figure (4) Train/Test Outcome on Cora Dataset</p>
 
 <p align="center">
   <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/Train_Acc_Pubmed.png" />
-  <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/Train_Acc_Pubmed.png" />
-   <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/Train_Acc_Pubmed.png" />
+  <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/Test_Acc_Pubmed.png" />
+   <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/Train_Time_Pubmed.png" />
 </p>
 <p align="center">Figure (4) Train/Test Outcome on Pubmed Dataset</p>
