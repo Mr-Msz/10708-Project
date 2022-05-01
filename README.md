@@ -31,6 +31,5 @@ For our first alternative sampling method, we tried different values of the hype
 <p align="center">
   <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/c-graph.png" />
 </p>
-
 <p align="center">Figure 3: Test Accuracy with different value of c</p>
 
