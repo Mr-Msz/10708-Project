@@ -15,5 +15,5 @@ For our baselines, we ran 3 different state of art Graph Convolutional Network m
 
 ![Test Accuracy of 3 models over Cora Dataset](https://github.com/Mr-Msz/10708-Project/blob/main/Images/Pre_Test_Acc_Cora.png)
 ![Train Time of 3 models over Cora Dataset](https://github.com/Mr-Msz/10708-Project/blob/main/Images/Pre_Train_Time_Cora.png)
-![Test Accuracy of 3 models over Pubmed Dataset](https://github.com/Mr-Msz/10708-Project/blob/main/Images/Pre_Test_Acc_Pubmed.png)
-![Test Accuracy of 3 models over Pubmed Dataset](https://github.com/Mr-Msz/10708-Project/blob/main/Images/Pre_Train_Time_Pubmed.png)
+![Test Accuracy of 3 models over Pubmed Dataset](https://github.com/Mr-Msz/10708-Project/blob/main/Images/Pre_Test_Acc_Pub.png)
+![Test Accuracy of 3 models over Pubmed Dataset](https://github.com/Mr-Msz/10708-Project/blob/main/Images/Pre_Train_Time_Pub.png)
