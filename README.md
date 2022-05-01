@@ -5,4 +5,11 @@ In this paper we attempt to modify Fast-GCN in order to improve both the speed a
 
 The codes are adapted from [FastGCN in PyTorch](https://github.com/Gkunnan97/FastGCN_pytorch).
 
+## Background/Dataset
+|              | Nodes | Edges | Classes | Features |
+|:-------------|:------:|:------:|:------:|:------:|
+|Cora     |  2,708 |  5,429 |  7 |  1433 |
+|PubMed       |  19,717 |  44,338 |  3 |  500 |
+
+For our baselines, we ran 3 different state of art Graph Convolutional Network models (Vanilla GCN, Fast-GCN, and AS-GCN). We found that Fast-GCN was significantly faster than the other methods on both Cora and Pubmed. However, the test accuracy of Fast-GCN was slightly worse than the other two methods.
 
