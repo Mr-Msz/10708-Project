@@ -28,6 +28,9 @@ Experiment can be found in this [report](https://github.com/Mr-Msz/10708-Project
 (1) c value:
 For our first alternative sampling method, we tried different values of the hyper-parameter c in order to find the optimal weighting between uniform sampling and our calculated probability distribution. We found that c = 0.2 worked the best on both Pubmed and Cora dataset, and plotted the results:
 
-<p align="center">![](https://github.com/Mr-Msz/10708-Project/blob/main/Images/c-graph.png)</p>
+<p align="center">
+  <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/c-graph.png" />
+</p>
+
 <p align="center">Figure 3: Test Accuracy with different value of c</p>
 
