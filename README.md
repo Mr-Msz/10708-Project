@@ -60,3 +60,16 @@ Below we present a comparison between GCN-Related Techniques in terms of train a
    <img src="https://github.com/Mr-Msz/10708-Project/blob/main/Images/Train_Time_Pubmed.png" />
 </p>
 <p align="center">Figure (4) Train/Test Outcome on Pubmed Dataset</p>
+
+9 References and citations
+References
+[1] Jie Chen, Tengfei Ma, and Cao Xiao. “Fastgcn: fast learning with graph convolutional networks via importance sampling”. In: arXiv preprint arXiv:1801.10247 (2018).
+[2] Lei Chen et al. “Revisiting graph based collaborative filtering: A linear residual graph convolutional network approach”. In: Proceedings of the AAAI conference on artificial intelligence. Vol. 34. 01. 2020, pp. 27–34.
+[3] Wei-Lin Chiang et al. “Cluster-gcn: An efficient algorithm for training deep and large graph convolutional networks”. In: Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining. 2019, pp. 257–266.
+[4] Thomas N Kipf and Max Welling. “Semi-supervised classification with graph convolutional networks”. In: arXiv preprint arXiv:1609.02907 (2016).
+[5] Maosen Li et al. “Actional-structural graph convolutional networks for skeleton-based action recognition”. In: Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. 2019, pp. 3595–3603.
+[6] Xin Liu et al. “Sampling methods for efficient training of graph convolutional networks: A survey”. In: IEEE/CAA Journal of Automatica Sinica 9.2 (2021), pp. 205–234.
+[7] Cheng Wan et al. “BNS-GCN: Efficient Full-Graph Training of Graph Convolutional Networks with Partition-Parallelism and Random Boundary Node Sampling Sampling”. In: Proceedings of Machine Learning and Systems 4 (2022).
+[8] Felix Wu et al. “Simplifying graph convolutional networks”. In: International conference on machine learning. PMLR. 2019, pp. 6861–6871.
+[9] Liang Yao, Chengsheng Mao, and Yuan Luo. “Graph convolutional networks for text classification”. In: Proceedings of the AAAI conference on artificial intelligence. Vol. 33. 01. 2019, pp. 7370–7377.
+[10] Si Zhang et al. “Graph convolutional networks: a comprehensive review”. In: Computational Social Networks 6.1 (2019), pp. 1–23.
