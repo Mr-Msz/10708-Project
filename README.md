@@ -45,3 +45,10 @@ After determining the optimal value of c (0.2), we began comparing the performan
 |Cora     |  0.363 |   0.737 |    0.722 |
 |PubMed       |  0.854 |   0.880 |    0.901 |
 
+Below we present a comparison between GCN-Related Techniques in terms of train and test accuracy over time. Each figure contains 4 lines; one for each of the following: Vanilla FastGCN Methods, FastGCN with Alternative Sampling Methods, and the Hybrid Method.
+
+![Train Accuracy of 3 models over Cora Dataset](https://github.com/Mr-Msz/10708-Project/blob/main/Images/Train_Acc_Cora.png)
+![Test Time of 3 models over Cora Dataset](https://github.com/Mr-Msz/10708-Project/blob/main/Images/Test_Acc_Cora.png)
+![Train Time of 3 models over Cora Dataset](https://github.com/Mr-Msz/10708-Project/blob/main/Images/Train_Time_Cora.png)
+<p align="center">Figure (4) Train/Test Outcome on Cora Dataset</p>
+
