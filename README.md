@@ -61,8 +61,7 @@ Below we present a comparison between GCN-Related Techniques in terms of train a
 </p>
 <p align="center">Figure (4) Train/Test Outcome on Pubmed Dataset</p>
 
-9 References and citations
-References
+## References
 [1] Jie Chen, Tengfei Ma, and Cao Xiao. “Fastgcn: fast learning with graph convolutional networks via importance sampling”. In: arXiv preprint arXiv:1801.10247 (2018).\
 [2] Lei Chen et al. “Revisiting graph based collaborative filtering: A linear residual graph convolutional network approach”. In: Proceedings of the AAAI conference on artificial intelligence. Vol. 34. 01. 2020, pp. 27–34.\
 [3] Wei-Lin Chiang et al. “Cluster-gcn: An efficient algorithm for training deep and large graph convolutional networks”. In: Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining. 2019, pp. 257–266.\
