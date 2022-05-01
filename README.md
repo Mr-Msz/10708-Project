@@ -33,3 +33,15 @@ For our first alternative sampling method, we tried different values of the hype
 </p>
 <p align="center">Figure 3: Test Accuracy with different value of c</p>
 
+(2) Performance:
+After determining the optimal value of c (0.2), we began comparing the performance of different methods on the two dataset. The following table is the final performance for each of the methods (test accuracy):
+|Proposed & Baseline| FastGCN | FastGCN with Alternative Sampling | Hybrid Methods |
+|:-------------|:------:|:------:|:------:|
+|Cora     |  0.854 |  0.860 |   0.680 |
+|PubMed       |  0.844 |  0.847 |   0.886 |
+
+|Conventional ML| Logistic Regression | Multi-layer Perceptron | Random Forest |
+|:-------------|:------:|:------:|:------:|
+|Cora     |  0.363 |   0.737 |    0.722 |
+|PubMed       |  0.854 |   0.880 |    0.901 |
+
